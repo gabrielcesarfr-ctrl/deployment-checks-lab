@@ -1,1 +1,1 @@
-Final lab: pending, failed, manual, and PR.
+Final lab: dedicated production CI passes.
