@@ -1,1 +1,1 @@
-Synthetic preview and pull request.
+Synthetic pending then successful CI.
