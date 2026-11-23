@@ -1,0 +1,21 @@
+name: Production CI
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  production:
+    name: production-main-ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      MESSAGE: ${{ github.event.head_commit.message }}
+    steps:
+      - name: Synthetic production test
+        run: |
+          printf 'event=%s sha=%s ref=%s\n' "$GITHUB_EVENT_NAME" "$GITHUB_SHA" "$GITHUB_REF"
+          case "$MESSAGE" in
+            "Final lab: fail") sleep 90; exit 1 ;;
+            "Final lab: pass") sleep 90 ;;
+          esac
