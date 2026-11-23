@@ -1,1 +1,1 @@
-Synthetic pending then failed CI.
+Synthetic pending then successful CI.
