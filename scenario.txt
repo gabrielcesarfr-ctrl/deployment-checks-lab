@@ -1,1 +1,1 @@
-Synthetic pending then successful CI.
+Final lab: pending, failed, manual, and PR.
