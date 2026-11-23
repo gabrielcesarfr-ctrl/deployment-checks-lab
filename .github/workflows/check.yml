@@ -1,0 +1,21 @@
+name: Promotion lab
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EVENT: ${{ github.event_name }}
+      MESSAGE: ${{ github.event.head_commit.message }}
+    steps:
+      - name: Synthetic check
+        run: |
+          printf 'event=%s sha=%s ref=%s\n' "$EVENT" "$GITHUB_SHA" "$GITHUB_REF"
+          if [ "$EVENT" = push ]; then
+            case "$MESSAGE" in
+              "Lab B: failure") sleep 90; exit 1 ;;
+              "Lab C: success") sleep 90 ;;
+            esac
+          fi
